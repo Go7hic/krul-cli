@@ -1,1 +1,1 @@
-# athena-cli
+# krul-cli
