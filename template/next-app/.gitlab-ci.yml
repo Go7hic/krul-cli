@@ -1,0 +1,133 @@
+stages:
+  - install_deps
+#  - test
+  - build
+  - deploy
+  - notify
+
+variables:
+  # PROJECT_NAME: "gitlab-ci-demo" # CI_PROJECT_NAME
+  BETA_SERVICE_IP: "106.14.47.9" # beta环境服务器IP
+  PRODUCTION_SERVICE_IP: "121.41.103.235" # production环境服务器IP
+  BETA_UPLOAD_REMOTE_PATH: "beta/${CI_PROJECT_NAME}_next" # beta环境上传文件的远程地址
+  BETA_UPLOAD_LOCAL_PATH: "dist" # beta环境上传文件的本地路径
+  PRODUCTION_UPLOAD_REMOTE_PATH: "release/${CI_PROJECT_NAME}_next" # production环境上传文件的远程路径
+  PRODUCTION_UPLOAD_LOCAL_PATH: "dist" # production环境上传文件的本地路径
+
+cache:
+  key: ${CI_RUNNER_ID} # 每次Pipeline都会重新安装依赖，缓存识别为当前Runner唯一ID
+  paths:
+    - node_modules/
+
+# 所有job执行前安装依赖，会被cache缓存，因为cache不保证一定存在所以每个job执行时要重新安装依赖，但如果命中cache则会加快安装速度
+before_script:
+  - whoami
+  - node -v
+  - npm -v
+  - druid --version
+  #- npm install
+
+# 安装依赖
+install_deps:
+  stage: install_deps
+  tags:
+    - fe-gitlab2
+  only:
+    - develop
+    - master
+  dependencies: []
+  script:
+    - npm install
+
+## 代码逻辑测试
+#test_logic:
+#  stage: test
+#  tags:
+#    - fe-gitlab2
+#  only:
+#    - develop
+#    - master
+#  dependencies: []
+#  script:
+#    - npm run test
+#
+## 代码格式测试
+#test_lint:
+#  stage: test
+#  tags:
+#    - fe-gitlab2
+#  only:
+#    - develop
+#    - master
+#  dependencies: []
+#  script:
+#    - npm run test:lint
+#  allow_failure: true # 代码格式问题不影响后续job执行
+
+# beta环境代码编译
+build_beta:
+  stage: build
+  tags:
+    - fe-gitlab2
+  only:
+    - develop
+  dependencies: []
+  script:
+#    - npm run build
+    - pwd
+
+# production代码编译
+build_production:
+  stage: build
+  tags:
+    - fe-gitlab2
+  only:
+    - master
+  artifacts:
+    name: "$CI_BUILD_REF_NAME"
+    paths:
+      - dist
+  dependencies: []
+  script:
+#    - npm run build
+    - pwd
+
+# beta环境发布
+deploy_beta:
+  stage: deploy
+  tags:
+    - fe-gitlab2
+  only:
+    - develop
+  dependencies: []
+  script:
+    - whoami
+    # - 'ssh root@${BETA_SERVICE_IP} "npm install -g http://npm.wxb.com/druid/-/druid-1.2.5.tgz" && npm install -g pm2'
+    # - 'ssh root@${BETA_SERVICE_IP} "whoami && cd /wxb/${CI_PROJECT_NAME} && git pull origin develop && npm run build && druid upload beta/Ariel/_next dist && pm2 startOrReload ecosystem.config.js --env=beta"'
+    - 'ssh root@${BETA_SERVICE_IP} "whoami && cd /wxb/${CI_PROJECT_NAME} && git reset --hard && git pull origin develop && npm install && rm -rf dist/static && BETA=true npm run build && druid upload beta/Ariel/_next/static dist/static && pm2 startOrReload ecosystem.config.js --env beta"'
+
+# production环境发布
+deploy_production:
+  stage: deploy
+  tags:
+    - fe-gitlab2
+  only:
+    - master
+  dependencies: []
+  script:
+    - whoami
+    # - 'ssh root@${BETA_SERVICE_IP} "npm install -g http://npm.wxb.com/druid/-/druid-1.2.5.tgz" && npm install -g pm2'
+    #- 'echo "ssh root@${PRODUCTION_SERVICE_IP} whoami && druid deploy ${CI_BUILD_REF_NAME} production ${CI_PROJECT_NAME}"'
+    #- 'ssh root@${PRODUCTION_SERVICE_IP} "whoami && druid deploy ${CI_BUILD_REF_NAME} production ${CI_PROJECT_NAME}"'
+    - 'ssh root@${PRODUCTION_SERVICE_IP} "whoami && cd /wxb/${CI_PROJECT_NAME} && git reset --hard && git pull origin master && npm install && rm -rf dist/static && BETA=false npm run build && druid upload release/Ariel/_next/static dist/static && pm2 startOrReload ecosystem.config.js --env production"'
+
+# 通知
+notify:
+  stage: notify
+  tags:
+    - fe-gitlab2
+  only:
+    - /^production-.*$/
+  dependencies: []
+  script:
+    - 'druid sendmail ${CI_BUILD_REF_NAME} ${CI_PROJECT_NAME}发布成功'
