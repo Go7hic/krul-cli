@@ -8,7 +8,7 @@
   "license": "MIT",
   "reveal": true,
   "bin": {
-    "kru-cli": "index.js"
+    "krul-cli": "index.js"
   },
   "scripts": {
     "test": "ava -v && standard *.js lib/*.js",
