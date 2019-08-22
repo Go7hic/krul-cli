@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/Go7hic/krul-cli/compare/v0.0.4...v0.0.5) (2019-08-22)
+
+
+### Bug Fixes
+
+* fix cli ([311e8a4](https://github.com/Go7hic/krul-cli/commit/311e8a4))
+
 ### [0.0.4](https://github.com/Go7hic/krul-cli/compare/v0.0.3...v0.0.4) (2019-08-21)
 
 
