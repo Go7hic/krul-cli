@@ -33,9 +33,9 @@ export default function Index(props) {
         </p>
 
         <div className='row'>
-          <Button type="primary">wxb 🐂🍺</Button>
+          <Button type="primary">w🐂🍺</Button>
         </div>
-        <div className='description'>先登录 wxb 测试帐号才能获取用户信息<br />用户信息：<span>{userInfo && userInfo.user && userInfo.user.nickname}</span></div>
+
         <div className='description'>
           {
             data && data.map(i => (

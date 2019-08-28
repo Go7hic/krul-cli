@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 
 const links = [
-  { href: 'https://www.wxb.com', label: 'wxb' },
-  { href: 'https://www.wxb.com', label: 'tuibao' }
+  { href: 'https://www.google.com', label: 'google' },
+  { href: 'https://www.twitter.com', label: 'twitter' }
 ].map(link => {
   link.key = `nav-link-${link.href}-${link.label}`;
   return link;
