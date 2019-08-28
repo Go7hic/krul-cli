@@ -1,7 +1,8 @@
 {
-  "name": "krul-cli",
-  "version": "0.0.10",
-  "description": "CLI for create project",
+  "name": "root",
+  "private": true,
+  "version": "0.0.0",
+  "description": "CLI for create f2e project",
   "repository": "",
   "author": "Go7hic",
   "main": "index.js",
