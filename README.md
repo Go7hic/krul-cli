@@ -10,9 +10,8 @@ $ krul-cli
 ## support template list
 
 - next-app
-- react-library
-- react-typescript-library
-- typescript-library
+- react-library (js & ts)
+- typescript-library (todo)
 
 ## License
 
