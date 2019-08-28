@@ -52,7 +52,7 @@ module.exports = async (opts) => {
         type: 'input',
         name: 'author',
         message: 'Author',
-        default: 'wxb'
+        default: opts.author
       },
       {
         type: 'input',
