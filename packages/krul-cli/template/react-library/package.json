@@ -93,6 +93,6 @@
     "@types/react-dom": "^16.8.4",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "krul-scripts": "0.1.2"
+    "krul-scripts": "0.1.3"
   }
 }

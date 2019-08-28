@@ -7,7 +7,7 @@
   "license": "ISC",
   "main": "index.js",
   "bin": {
-    "wxb-script": "./index.js"
+    "krul-scripts": "./index.js"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"

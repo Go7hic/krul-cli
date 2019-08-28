@@ -7,7 +7,7 @@
   "license": "ISC",
   "main": "index.js",
   "bin": {
-    "wxb-cli": "./index.js"
+    "krul-cli": "./index.js"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
