@@ -2,9 +2,6 @@
 
 > {{description}}
 
-## DEMO
-
-http://git.wxb.com/pages/shipnew/{{name}}/public/index.html
 
 ## Install
 
@@ -30,4 +27,4 @@ class Example extends Component {
 
 ## License
 
-{{license}} © [{{author}}](https://git.wxb.com/{{author}})
+{{license}} © [{{author}}](https://github.com/{{author}})

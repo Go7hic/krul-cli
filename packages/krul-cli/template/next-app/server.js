@@ -35,7 +35,7 @@ app.prepare()
 
     server.listen(PORT, err => {
       if (err) throw err;
-      const serverUrl = `http://local.wxb.com:${PORT}`;
+      const serverUrl = `http://localhost:${PORT}`;
       console.log(`> Ready on ${serverUrl}`);
       // 开发环境自动启动
       if (isDev) {

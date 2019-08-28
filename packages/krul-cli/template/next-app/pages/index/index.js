@@ -27,7 +27,7 @@ export default function Index(props) {
         <title>next-app-demo</title>
       </Head>
       <PageContentWrap className="home-page">
-        <h1 className='title'>Welcome to Next.js@wxb!</h1>
+        <h1 className='title'>Welcome to Next.js</h1>
         <p className='description'>
         To get started, edit <code>pages/index.js</code> and save to reload.
         </p>

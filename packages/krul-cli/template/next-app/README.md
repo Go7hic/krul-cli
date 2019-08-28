@@ -20,4 +20,4 @@
 
 
 ## License
-MIT ©wxb
+MIT ©Go7hic
