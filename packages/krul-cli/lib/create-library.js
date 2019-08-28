@@ -72,7 +72,7 @@ module.exports = async (info) => {
     try {
 
       const promise = module.exports.initPackageManager({ dest, info });
-      console.log('下面安装需要一会，你可以去上个厕所或倒杯水');
+      console.log('Wait for a moment, please...');
       ora.promise(promise, `Running ${manager} install and ${manager} link`);
       await promise;
     } catch (e) {
