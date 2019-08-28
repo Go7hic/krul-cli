@@ -1,0 +1,23 @@
+{
+  "name": "krul-cli",
+  "version": "0.1.0",
+  "description": "> TODO: description",
+  "author": "Go7hic <gtfx0209@qq.com>",
+  "homepage": "https://github.com/Go7hic/krul-cli#readme",
+  "license": "ISC",
+  "main": "index.js",
+
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Go7hic/krul-cli.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Go7hic/krul-cli/issues"
+  }
+}

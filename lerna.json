@@ -1,0 +1,15 @@
+{
+  "lerna": "3.16.4",
+  "version": "independent",
+  "packages": [
+    "packages/*"
+  ],
+  "command": {
+    "bootstrap": {
+      "hoist": true
+    },
+    "version": {
+      "conventionalCommits": true
+    }
+  }
+}
