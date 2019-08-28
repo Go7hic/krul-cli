@@ -6,6 +6,9 @@
   "homepage": "https://github.com/Go7hic/krul-cli#readme",
   "license": "ISC",
   "main": "index.js",
+  "bin": {
+    "wxb-script": "./index.js"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
