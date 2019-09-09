@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/Go7hic/krul-cli/compare/krul-cli@0.1.7...krul-cli@0.1.8) (2019-09-09)
+
+
+### Bug Fixes
+
+* update krul-cli ([363297f](https://github.com/Go7hic/krul-cli/commit/363297f))
+
+
+
+
+
 ## [0.1.7](https://github.com/Go7hic/krul-cli/compare/krul-cli@0.1.6...krul-cli@0.1.7) (2019-08-28)
 
 
