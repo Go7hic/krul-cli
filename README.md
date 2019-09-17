@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-$ npm i krul-cli -g
+$ npm i krul-cli -g  or yarn global add krul-cli
 $ krul-cli
 ```
 
