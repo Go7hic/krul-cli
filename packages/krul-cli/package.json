@@ -44,6 +44,7 @@
     "globby": "9.2.0",
     "handlebars": "^4.1.0",
     "inquirer": "^6.2.2",
+    "latest-version": "^5.1.0",
     "make-dir": "^2.0.0",
     "ora": "^3.1.0",
     "p-each-series": "^1.0.0",

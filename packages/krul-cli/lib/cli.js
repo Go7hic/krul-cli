@@ -4,13 +4,20 @@
 const path = require('path');
 const chalk = require('chalk');
 const program = require('commander');
+const latestVersion = require('latest-version');
 const { version } = require('../package');
-
 const getDefaultLibraryParams = require('./get-default-library-params');
 const createLibrary = require('./create-library');
 const promptLibraryParams = require('./prompt-library-params');
 
 module.exports = async () => {
+  const _version = await latestVersion('krul-cli');
+  if (String(_version) != String(version)) {
+    console.log('please update the latest version\r\n');
+    console.log(`your current version：${version}\r\n`);
+    console.log(`latest version：${latestVersion}\r\n`);
+    return;
+  }
   const defaults = await getDefaultLibraryParams();
 
   program
