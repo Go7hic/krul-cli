@@ -15,7 +15,7 @@ module.exports = async () => {
   if (String(_version) != String(version)) {
     console.log('please update the latest version\r\n');
     console.log(`your current version：${version}\r\n`);
-    console.log(`latest version：${latestVersion}\r\n`);
+    console.log(`latest version：${_version}\r\n`);
     return;
   }
   const defaults = await getDefaultLibraryParams();
