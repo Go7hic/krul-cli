@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.11](https://github.com/Go7hic/krul-cli/compare/krul-cli@0.1.10...krul-cli@0.1.11) (2020-04-08)
+
+
+### Bug Fixes
+
+* delete unuse file ([38bfdd8](https://github.com/Go7hic/krul-cli/commit/38bfdd8))
+
+
+
+
+
 ## [0.1.10](https://github.com/Go7hic/krul-cli/compare/krul-cli@0.1.9...krul-cli@0.1.10) (2019-09-28)
 
 
