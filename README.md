@@ -1,5 +1,5 @@
 # krul-cli
-
+> CLI for create f2e project
 ## Usage
 
 ```js

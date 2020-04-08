@@ -1,6 +1,6 @@
 # `krul-cli`
 
-> TODO: description
+> CLI for create f2e project
 
 ## Usage
 

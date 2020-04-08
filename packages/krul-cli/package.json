@@ -1,7 +1,7 @@
 {
   "name": "krul-cli",
   "version": "0.1.12",
-  "description": "> TODO: description",
+  "description": "CLI for create f2e project",
   "author": "Go7hic <gtfx0209@qq.com>",
   "homepage": "https://github.com/Go7hic/krul-cli#readme",
   "license": "ISC",
