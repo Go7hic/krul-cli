@@ -63,18 +63,9 @@ module.exports = async () => {
   const dest = await createLibrary(params);
 
   console.log(`
-  项目已经创建在 ${dest}.
-
-  如果你是创建 next-app 应用，执行下面命令开始开发：
-  $ ${chalk.cyan(`cd ${params.shortName} && ${params.manager} start`)}
-
-
-  如果你是创建 library，执行下面命令开始开发：
-  $ ${chalk.cyan(`cd ${params.shortName} && ${params.manager} start`)}
-  并在另一个窗口运行 example 里服务查看效果:
-  $ ${chalk.cyan(`cd ${path.join(params.shortName, 'example')} && ${params.manager} start`)}
-
-  `);
+  🤘project is created on ${dest}\r\r
+  ☕️happy hacking...
+`);
 
 
   return dest;

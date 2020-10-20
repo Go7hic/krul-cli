@@ -32,7 +32,7 @@ module.exports = async (opts) => {
 
     return info;
   } else {
-    const info = await inquirer.prompt([
+    let inputArr = [
       {
         type: 'input',
         name: 'name',
@@ -57,7 +57,7 @@ module.exports = async (opts) => {
       {
         type: 'input',
         name: 'repo',
-        message: 'Gitlab Repo Path',
+        message: 'Github Repo Path',
         default: opts.repo
       },
       {
@@ -77,18 +77,25 @@ module.exports = async (opts) => {
         type: 'list',
         name: 'template',
         message: 'Template',
-        choices: [ 'next-app', 'react-library' ],
+        choices: [ 'next-app', 'react-library', 'typescript-library' ],
         default: opts.template
       },
-      {
-        type: 'list',
-        name: 'language',
-        message: 'Language?',
-        choices: [ 'TypeScript', 'JavaScript' ],
-        default: opts.typescript ? 'TypeScript' : 'JavaScript'
-      }
-    ]);
+    ]
+    let info = await inquirer.prompt(inputArr);
+    if (info.template == 'react-library') {
+      const jsTs = await inquirer.prompt([
+        {
+          type: 'list',
+          name: 'language',
+          message: 'Language?',
+          choices: [ 'TypeScript', 'JavaScript' ],
+          default: opts.typescript ? 'TypeScript' : 'JavaScript'
+        }
+      ]);
+      info.language = jsTs.language;
+    }
 
+    
     info.typescript = (info.language === 'TypeScript');
 
     config.set('author', info.author);

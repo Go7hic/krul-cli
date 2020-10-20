@@ -9,11 +9,9 @@ $ krul-cli
 
 ## Support template list
 
-- next-app (next.js app)
-- react-library (js & ts)
-- node-cli-library (todo)
-- typescript-library (todo)
-- electron app (todo)
+- next-app: next.js app
+- react-library: create react library with JS/TypeScript
+- typescript-library: create node.js/dom library with TypeScript
 
 ## Changelog
 

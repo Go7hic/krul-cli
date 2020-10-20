@@ -10,22 +10,9 @@ const path = require('path');
 const pEachSeries = require('p-each-series');
 
 const pkg = require('../package');
+const { templateBlacklist, templateTSBlacklist, templateTSWhitelist } = require('./black-white-list');
+const gitignore = require('./gitignore');
 
-const templateBlacklist = new Set([
-  'example/public/favicon.ico',
-  'static/favicon.ico'
-]);
-
-const templateTSBlacklist = new Set([
-  'src/index.js'
-]);
-
-const templateTSWhitelist = new Set([
-  'tsconfig.json',
-  'src/index.tsx',
-  'src/typings.d.ts',
-  'example/tsconfig.json'
-]);
 
 module.exports = async (info) => {
   const {
@@ -64,7 +51,7 @@ module.exports = async (info) => {
       ora.promise(promise, `Copying template to ${dest}`);
       await promise;
     } catch (e) {
-      // console.log(e);
+      console.log(e);
     }
   }
 
@@ -72,7 +59,7 @@ module.exports = async (info) => {
     try {
 
       const promise = module.exports.initPackageManager({ dest, info });
-      console.log('Wait for a moment, please...');
+      console.log('⏱ Wait for a moment, please...');
       ora.promise(promise, `Running ${manager} install and ${manager} link`);
       await promise;
     } catch (e) {
@@ -135,7 +122,7 @@ module.exports.initPackageManager = async (opts) => {
 
   const example = path.join(dest, 'example');
   let commands = [];
-  if (info.template == 'next-app') {
+  if (info.template != 'react-library') {
 
     commands = [
       {
@@ -172,28 +159,7 @@ module.exports.initGitRepo = async (opts) => {
   } = opts;
 
   const gitIgnorePath = path.join(dest, '.gitignore');
-  fs.writeFileSync(gitIgnorePath, `
-# See https://help.github.com/ignore-files/ for more about ignoring files.
-
-# dependencies
-node_modules
-
-# builds
-build
-dist
-.rpt2_cache
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-`, 'utf8');
+  fs.writeFileSync(gitIgnorePath, gitignore, 'utf8');
 
   const cmd = `git init && git add . && git commit -m "init ${pkg.name}@${pkg.version}"`;
   return execa.shell(cmd, { cwd: dest });
